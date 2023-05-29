@@ -1,13 +1,30 @@
+using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
 namespace _Scripts {
+    public enum ParticleType {
+        SelfDefine,
+        BulletErased,
+        ReimuMainBreak,
+        FinBreak,
+        NeedleBreak,
+        WaterBombBreak,
+        ParticleMaple,
+        ParticleStar,
+        ParticleRing,
+        FairyBreakStream,
+    }
     public class ParticleManager : MonoBehaviour {
-        [SerializeField] private Sprite[] particle00;
-        [SerializeField] private Sprite[] player01Shoot00;
-        [SerializeField] private Sprite[] player01Shoot01;
-        
+        public FairyBreakEffectController fairyBreakEffect;
+
+        [SerializeField] private Sprite[] bulletErased;
+        [SerializeField] private Sprite[] reimuMainShoot;
+        [SerializeField] private Sprite[] reimuHighSpeedShoot;
+        [SerializeField] private Sprite[] fairyBreakStream;
         [SerializeField] private Particle particle;
+        [SerializeField] private Sprite[] singleParticleSprites;
+        [SerializeField] private Material[] singleParticleMaterials;
         private ObjectPool<Particle> _particlePool;
         public static ParticleManager Manager;
 
@@ -22,53 +39,78 @@ namespace _Scripts {
             //TODO: put this in start will cause some priory level problem leading to some undefined problems,fix them later.
             //check Hatagora's lib for some ref. 
             _particlePool = new ObjectPool<Particle>(() => {
-                return Instantiate(particle);
-            }, bullet => {
-                bullet.gameObject.SetActive(true);
-            }, bullet => {
-                bullet.gameObject.SetActive(false);
-            }, bullet => {
-                Destroy(bullet.gameObject);
+                return Instantiate(particle); 
+            }, p => {
+                p.gameObject.SetActive(true);
+            }, p => {
+                p.gameObject.SetActive(false);
+                p.spriteRenderer.sprite = null;
+                p.spriteRenderer.color = Color.white;
+                p.transform.localScale = Vector3.one;
+            }, p => {
+                Destroy(p.gameObject);
             }, false, 50, 200);
         }
         
-        public void ReleaseParticle(Particle target) {
-            _particlePool.Release(target);   
+        public static void ReleaseParticle(Particle target) {
+            Manager._particlePool.Release(target);
         }
 
-        public Particle GetParticle(int character, int ord) {
-            var p = _particlePool.Get();
-            p.SetType(character, ord);
-            return p;
-        }
-        
-        public Particle GetParticle(Sprite sprite) {
-            var p = _particlePool.Get();
+        public static Particle GetParticle(Sprite sprite) {
+            var p = Manager._particlePool.Get();
             p.SetType(sprite);
             return p;
         }
 
-        public Sprite[] GetParticleAnim(int character, int ord) {
-            switch (character) {
-                default:
-                case 0:
-                    switch (ord) {
-                        default:
-                        case 0:
-                            //0 0 can define sprite by yourself.
-                            return particle00;
-                            break;
-                    }
+        public static Particle GetParticleToPosition(ParticleType type, Vector3 pos) {
+            var p = GetParticle(type);
+            p.transform.position = pos;
+            return p;
+        }
+
+        public static Particle GetParticle(ParticleType type) {
+            var p = Manager._particlePool.Get();
+            switch (type) {
+                case ParticleType.BulletErased:
+                    p.SetAnimation(Manager.bulletErased);
+                    p.spriteRenderer.material = Manager.singleParticleMaterials[1];
                     break;
-                
-                case 1:
-                    switch (ord) {
-                    default:
-                        return player01Shoot00;
-                    case 1:
-                        return player01Shoot01;
-                }
+                case ParticleType.ReimuMainBreak:
+                    p.SetAnimation(Manager.reimuMainShoot);
+                    p.spriteRenderer.material = Manager.singleParticleMaterials[1];
+                    break;
+                case ParticleType.FinBreak:
+                    p.SetAnimation(Manager.reimuHighSpeedShoot);
+                    p.spriteRenderer.material = Manager.singleParticleMaterials[0];
+                    break;
+                case ParticleType.NeedleBreak:
+                    p.SetSprite(Manager.singleParticleSprites[2]);
+                    p.spriteRenderer.material = Manager.singleParticleMaterials[0];
+                    break;
+                case ParticleType.WaterBombBreak:
+                    p.SetSprite(Manager.singleParticleSprites[3]);
+                    p.spriteRenderer.material = Manager.singleParticleMaterials[1];
+                    break;
+                case ParticleType.ParticleStar:
+                    p.SetSprite(Manager.singleParticleSprites[0]);
+                    p.spriteRenderer.material = Manager.singleParticleMaterials[0];
+                    break;
+                case ParticleType.ParticleMaple:
+                    p.SetSprite(Manager.singleParticleSprites[1]);
+                    p.spriteRenderer.material = Manager.singleParticleMaterials[1];
+                    break;
+                case ParticleType.ParticleRing:
+                    p.SetSprite(Manager.singleParticleSprites[4]);
+                    p.spriteRenderer.material = Manager.singleParticleMaterials[1];
+                    break;
+                case ParticleType.FairyBreakStream:
+                    p.SetSprite(Manager.fairyBreakStream[0]);
+                    p.SetAnimation(Manager.fairyBreakStream);
+                    p.spriteRenderer.material = Manager.singleParticleMaterials[1];
+                    break;
             }
+            p.SetType(type);
+            return p;
         }
     }
 }

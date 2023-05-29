@@ -25,8 +25,6 @@ namespace _Scripts.Title {
             
             float y = yScale + Mathf.Cos(mul * timer / 30f * Mathf.Deg2Rad) * 0.1f;
             transform.localScale = new Vector3(transform.localScale.x, y, transform.localScale.z);
-            
-            
         }
     }
 }

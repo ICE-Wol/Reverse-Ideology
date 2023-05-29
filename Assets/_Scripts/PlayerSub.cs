@@ -1,26 +1,28 @@
+using _Scripts;
 using UnityEngine;
 
 namespace _Scripts {
     public class PlayerSub : MonoBehaviour {
         [SerializeField] private SpriteRenderer shade;
         private int _timer;
-        private int _type;
+        private PlayerBulletType _type;
         void Start() {
             _timer = 0;
-            _type = 1;
+            _type = PlayerBulletType.Needle;
         }
 
         public void Fire(float direction) {
-            var bullet = BulletManager.Manager.PlayerBulletPool.Get();
-            bullet.SetPlayerBulletType(_type / 10, _type % 10);
-            bullet.transform.position = transform.position;
-            bullet.SetDirection(direction);
-        }
+            var pos = transform.position;
+            var leftBullet = BulletManager.GetPlayerBulletWithType(_type);
+            leftBullet.transform.position = pos + Vector3.up + 0.08f * Vector3.left;
 
-        // Update is called once per frame
-        void Update() {
-            transform.rotation = Quaternion.Euler(0f,0f,_timer / 3f);
-            shade.transform.rotation = Quaternion.Euler(0f,0f,-_timer / 3f);
+            var rightBullet = BulletManager.GetPlayerBulletWithType(_type);
+            rightBullet.transform.position = pos + Vector3.up - 0.08f * Vector3.left;
+        }
+        
+        void FixedUpdate() {
+            transform.rotation = Quaternion.Euler(0f,0f,_timer * 3f);
+            shade.transform.rotation = Quaternion.Euler(0f,0f,-_timer * 3f);
             _timer++;
         }
     }

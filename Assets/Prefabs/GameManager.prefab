@@ -49,8 +49,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4126f16606321494d80be7f6956d79eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HiScoreText: {fileID: 0}
+  CurScoreText: {fileID: 0}
+  PowerText: {fileID: 0}
+  MaxPointText: {fileID: 0}
+  GrazeText: {fileID: 0}
   player: {fileID: 0}
-  playerDataText: {fileID: 0}
   player00Idle:
   - {fileID: -213700365, guid: 252a75d418eaa9449ae1c111086d9c5c, type: 3}
   - {fileID: 756571349, guid: 252a75d418eaa9449ae1c111086d9c5c, type: 3}
@@ -155,15 +159,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f6e6095a242f140961da062458bdb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle00:
-  - {fileID: 21300000, guid: 4ec0cf45b1c20e5438106572d20e5a95, type: 3}
-  player01Shoot00:
-  - {fileID: 1165867937, guid: 900129580b8c40c4db3c66295c1b9feb, type: 3}
+  fairyBreakEffect: {fileID: 4021585747989496593, guid: 58508b713fae17d45b44eef21555ba6a,
+    type: 3}
+  reimuMainShoot:
   - {fileID: -2011168728, guid: 900129580b8c40c4db3c66295c1b9feb, type: 3}
   - {fileID: 1713363024, guid: 900129580b8c40c4db3c66295c1b9feb, type: 3}
   - {fileID: -1913761651, guid: 900129580b8c40c4db3c66295c1b9feb, type: 3}
-  player01Shoot01:
-  - {fileID: -103802841, guid: 4849f02638710c347bcd57ddc9eed74c, type: 3}
+  reimuHighSpeedShoot:
   - {fileID: -661701131, guid: 4849f02638710c347bcd57ddc9eed74c, type: 3}
   - {fileID: -1511386366, guid: 4849f02638710c347bcd57ddc9eed74c, type: 3}
   - {fileID: 263496607, guid: 4849f02638710c347bcd57ddc9eed74c, type: 3}
@@ -172,8 +174,24 @@ MonoBehaviour:
   - {fileID: -198565722, guid: 4849f02638710c347bcd57ddc9eed74c, type: 3}
   - {fileID: -2008275607, guid: 4849f02638710c347bcd57ddc9eed74c, type: 3}
   - {fileID: -1173669395, guid: 4849f02638710c347bcd57ddc9eed74c, type: 3}
+  fairyBreakStream:
+  - {fileID: 21300000, guid: 99919e18f82d928429d2fcce6678bae9, type: 3}
+  - {fileID: 21300000, guid: 235d8b1d28ac27c43b761d0d90d73f3f, type: 3}
+  - {fileID: 21300000, guid: ae2b2944fb099a044a9e95b62420e808, type: 3}
+  - {fileID: 21300000, guid: 897366f7ad191d94caa7936fdc13bcf4, type: 3}
+  - {fileID: 21300000, guid: 05ae7c1e4cbd2fa43bedd77cc95dc3ae, type: 3}
+  - {fileID: 21300000, guid: 3b6ae01b2466a1e40bbbf05065988438, type: 3}
+  - {fileID: 21300000, guid: 48162d22bb8a4674da071480f2307219, type: 3}
+  - {fileID: 21300000, guid: c7c0303065968514fb96ae34bb68d567, type: 3}
+  - {fileID: 21300000, guid: 6e3ca65fb33c8b743a2b2c07d6af68a0, type: 3}
   particle: {fileID: 8624650928913395907, guid: daf98e30874a69247b26f4561ab7398f,
     type: 3}
+  singleParticleSprites:
+  - {fileID: 21300000, guid: 4ec0cf45b1c20e5438106572d20e5a95, type: 3}
+  - {fileID: 21300000, guid: f8824b047f25d9b4db30819a1c99a24d, type: 3}
+  singleParticleMaterials:
+  - {fileID: 2100000, guid: c9e1d3a0ea3ec0a4fbd6e545ccb3d0e8, type: 2}
+  - {fileID: 2100000, guid: e866b96757898f84c85ca987d2dad91d, type: 2}
 --- !u!114 &380076590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,8 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385596143555b8f4784247719ff4e3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyList:
-  - {fileID: 0}
+  enemyList: []
 --- !u!114 &346175287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,3 +226,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d562c3c87afb5a74b9d1be1d8627aa9f, type: 3}
   - {fileID: 21300000, guid: 75ef795885816f34ca09febd5977d902, type: 3}
   - {fileID: 21300000, guid: 4ab56e88f53233e48b38c3de8c341dfa, type: 3}
+  crystalPiece: {fileID: 7267648650113083893, guid: 19a04eb4f74881a46ad20c07f370d263,
+    type: 3}
+  crystalWhole: {fileID: 6546795802285704822, guid: 7fb7064364911814d8dffdac44767ea0,
+    type: 3}

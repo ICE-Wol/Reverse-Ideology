@@ -33,7 +33,7 @@ namespace _Scripts.Title {
             scale -= 0.0001f;
             transform.localScale = scale * Vector3.one;
             colorG += 0.0005f;
-            alpha = Calc.Approach(alpha, Mathf.Abs(Mathf.Cos(Time.deltaTime / 10f - offset)), 64f);
+            alpha = alpha.ApproachValue(Mathf.Abs(Mathf.Cos(Time.deltaTime / 10f - offset)), 64f);
             spriteRenderer.color = new Color(0f, colorG,1f, alpha);
 
             if (scale <= 0f) {

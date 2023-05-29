@@ -16,7 +16,7 @@ namespace _Scripts {
             _defaultPoints = new Vector3[maxPercent + 1];
             for (int i = 0; i <= maxPercent; i++) {
                 var degree = 360f / maxPercent * i + 90f;
-                _defaultPoints[i] = radius * Calc.Deg2Dir(degree);
+                _defaultPoints[i] = radius * degree.Deg2Dir();
             }
 
             _line.positionCount = maxPercent + 1;
