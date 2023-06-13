@@ -1,0 +1,4 @@
+repository "Reverse-Ideology@rockefeller_b@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"

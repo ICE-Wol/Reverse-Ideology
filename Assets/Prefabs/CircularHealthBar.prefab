@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d66b94de42214048bd53f0c2d23697e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1.42
+  radius: 0.8
   maxPercent: 100
 --- !u!1 &2551640697919917062
 GameObject:
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4360edf93535f4418ee3bf0b31049ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1.5
+  radius: 0.84
   curPercent: 100
   maxPercent: 100
 --- !u!1 &2551640699621096593
@@ -433,5 +433,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d66b94de42214048bd53f0c2d23697e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1.58
+  radius: 0.88
   maxPercent: 100

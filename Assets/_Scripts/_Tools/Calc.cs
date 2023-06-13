@@ -80,11 +80,17 @@ namespace _Scripts {
             current.z = ApproachValue(current.z, target.z, rate.z);
             return current;
         }
-        
+
         public static Vector3 ApproachValue(this Vector3 current, Vector3 target, Vector3 rate, float epsilon) {
             current.x = ApproachValue(current.x, target.x, rate.x, epsilon);
             current.y = ApproachValue(current.y, target.y, rate.y, epsilon);
             current.z = ApproachValue(current.z, target.z, rate.z, epsilon);
+            return current;
+        }
+        
+        public static Vector2 ApproachValue(this Vector2 current, Vector2 target, Vector2 rate) {
+            current.x = ApproachValue(current.x, target.x, rate.x);
+            current.y = ApproachValue(current.y, target.y, rate.y);
             return current;
         }
         
@@ -102,7 +108,7 @@ namespace _Scripts {
             current.z = ApproachValue(current.z, target.z, rate.z);
             return current;
         }
-        
+
         public static Vector3 ApproachRef(this ref Vector3 current, Vector3 target, Vector3 rate, float epsilon) {
             current.x = ApproachValue(current.x, target.x, rate.x, epsilon);
             current.y = ApproachValue(current.y, target.y, rate.y, epsilon);

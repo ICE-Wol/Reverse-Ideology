@@ -7,13 +7,13 @@ namespace _Scripts {
         private float[] _bombRadius;
 
         private float _timer;
-        private float _radius;
+        //private float _radius;
         private bool _trigger;
-        private int _cnt;
+        //private int _cnt;
         private void InitSpellCard() {
             _timer = 0;
-            _radius = 0;
-            _cnt = 0;
+            //_radius = 0;
+            //_cnt = 0;
             _waterBombs = new WaterBombController[8];
             _bombRadius = new float[8];
             for (int i = 0; i < 8; i++) {

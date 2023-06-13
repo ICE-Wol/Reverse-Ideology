@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace _Scripts {
@@ -21,7 +20,7 @@ namespace _Scripts {
                 _defaultPoints[i] = radius * degree.Deg2Dir();
             }
 
-            _line.positionCount = maxPercent + 1;
+            _line.positionCount = _defaultPoints.Length;
             _line.SetPositions(_defaultPoints);
         }
 
@@ -32,6 +31,9 @@ namespace _Scripts {
         public void RefreshLine(int current) {
             curPercent = current;
             _line.positionCount = curPercent + 1;
+            for (int i = 0; i < curPercent + 1; i++) {
+                _line.SetPosition(i, _defaultPoints[i]);
+            }
         }
 
         //test
